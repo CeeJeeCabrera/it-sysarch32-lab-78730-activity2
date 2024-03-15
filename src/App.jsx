@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from "./Header.jsx"
+import Footer from "./Footer.jsx"
+import Card from "./Card.jsx"
+import { useState } from "react";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [role, setRole] = useState('dev');
 
-  return (
-    <>
+  const [students, setStudents] = useState([  
+                      {id: 1, name: "Jessa Bhel Guillemer", email: "JessaGuillemer@gmail.com"},
+                      {id: 2, name: "Bowen Suico", email: "bowsuico@gmail.com"},
+                      {id: 3, name: "Charles Tombs", email: "tombits@gmail.com"},
+                      {id: 4, name: "Charles Brexie", email: "charlessaturinas@gmail.com"},
+                      {id: 5, name: "Jade Malvin Cordero", email: "jademalvincordero@gmail.com"}
+                    ]);
+
+  return(
+      <>
+      <Header/>
+      
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {students.map((student) => {
+          return(
+          <Card key={student.id} name = {student.name} email={student.email}/>
+          );
+        })}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <Footer/>
+      </>
+    );
 }
 
 export default App
